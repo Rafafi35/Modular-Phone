@@ -3,7 +3,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import base from "../assets/base.glb?url";
 import battery from "../assets/battery.glb?url";
 import camera from "../assets/camera.glb?url";
-import cameraA from "../assets/camera_a.glb?url";
+import basicCamera from "../assets/basic_camera.glb?url";
 import gimmick from "../assets/gimmick.glb?url";
 import {Suspense, useState} from "react";
 import items from "../data/items.js"
@@ -24,9 +24,10 @@ export default function Configure() {
         const { scene } = useGLTF(camera);
         return <primitive object={scene} scale={1} />;
     }
+    useGLTF.preload(camera)
 
-    function CameraA() {
-        const { scene } = useGLTF(cameraA);
+    function BasicCamera() {
+        const { scene } = useGLTF(basicCamera);
         return <primitive object={scene} scale={1} />;
     }
 
@@ -82,7 +83,7 @@ export default function Configure() {
                   <Suspense fallback={null}>
                       <Base />
                       <Battery/>
-                      <CameraA/>
+                      {selectedCamera === "Basic Camera" ? <BasicCamera/> : <Camera/>}
                       <Gimmick/>
                   </Suspense>
                   <OrbitControls target={[0, 0, 0]} enableZoom={false} enablePan={false}/>
@@ -124,6 +125,17 @@ export default function Configure() {
                           <p>CHF {item.price}</p>
                       </div>
                   ))}
+              </div>
+              <div className="border-2 border-gray-200 rounded mt-4 p-4">
+                  <div className="px-20 flex justify-between"><p>{selectedBase}</p><p>CHF {items.base.find(item => item.title === selectedBase)?.price}</p></div>
+                  <div className="px-20 flex justify-between"><p>{selectedBattery}</p><p>CHF {items.battery.find(item => item.title === selectedBattery)?.price}</p></div>
+                  <div className="px-20 flex justify-between"><p>{selectedCamera}</p><p>CHF {items.camera.find(item => item.title === selectedCamera)?.price}</p></div>
+                  <div className="px-20 flex justify-between"><p>{selectedGimmick}</p><p>CHF {items.gimmick.find(item => item.title === selectedGimmick)?.price}</p></div>
+                  <p className="px-20 flex justify-end border-t border-gray-200">Total: CHF {items.base.find(item => item.title === selectedBase)?.price +
+                      items.battery.find(item => item.title === selectedBattery)?.price +
+                      items.camera.find(item => item.title === selectedCamera)?.price +
+                      items.gimmick.find(item => item.title === selectedGimmick)?.price
+                  }</p>
               </div>
           </div>
       </div>
