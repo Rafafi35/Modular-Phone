@@ -1,7 +1,8 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import phoneModel from "../assets/phone.glb?url";
-import { Suspense } from "react";
+import {Suspense, useState} from "react";
+import items from "../data/items.js"
 
 export default function Configure() {
 
@@ -11,6 +12,9 @@ export default function Configure() {
     }
 
     const buttonStyle = "m-2 p-2 rounded-xl transition-colors hover:bg-gray-100 inline-flex items-center gap-2";
+
+    const [selectedCategory, setSelectedCategory] = useState("base")
+    const itemsShown = items[selectedCategory] ?? [];
 
   return (
       <div className="flex items-center justify-center">
@@ -27,13 +31,23 @@ export default function Configure() {
 
           <div className="w-1/2 h-160 mt-14    ">
               <div className="flex flex-row gap-4 justify-center border-2 border-gray-200 rounded">
-                  <button className={buttonStyle}>Base Phone</button>
-                  <button className={buttonStyle}>Battery</button>
-                  <button className={buttonStyle}>Camera</button>
-                  <button className={buttonStyle}>Gimmick</button>
+                  <button className={buttonStyle} onClick={() => setSelectedCategory("base")}>Base Phone</button>
+                  <button className={buttonStyle} onClick={() => setSelectedCategory("battery")}>Battery</button>
+                  <button className={buttonStyle} onClick={() =>setSelectedCategory("camera")}>Camera</button>
+                  <button className={buttonStyle} onClick={() => setSelectedCategory("gimmick")}>Gimmick</button>
               </div>
               <div className="border-2 border-gray-200 rounded mt-4 p-4">
-
+                  {itemsShown.map((item, index) => (
+                      <div key={index} className="m-4 p-4 border-2 border-gray-200 rounded">
+                          <h3 className="font-bold">{item.title}</h3>
+                          <ul className="flex flex-row gap-2">
+                              {item.specs.map((spec, specIndex) => (
+                                  <li key={specIndex} className="bg-gray-200 rounded p-1 text-xs">{spec}</li>
+                              ))}
+                          </ul>
+                          <p>CHF {item.price}</p>
+                      </div>
+                  ))}
               </div>
           </div>
       </div>
