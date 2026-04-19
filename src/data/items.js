@@ -37,17 +37,17 @@ const items = {
 
     camera: [
         {
-            title: "Camera Basic",
+            title: "Basic Camera",
             specs: ["12 MP", "Portrait Mode", "Full HD Video"],
             price: 59,
         },
         {
-            title: "Camera Pro",
+            title: "Pro Camera",
             specs: ["48 MP", "OIS", "4K Video"],
             price: 129,
         },
         {
-            title: "Camera Ultra",
+            title: "Ultra Camera",
             specs: ["108 MP", "OIS+", "8K Video"],
             price: 199,
         },
@@ -55,9 +55,9 @@ const items = {
 
     gimmick: [
         {
-            title: "Heart Rate Tracker",
+            title: "No Gimmick",
             specs: [],
-            price: 29,
+            price: 0,
         },
         {
             title: "8x8 Matrix",

@@ -3,6 +3,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import base from "../assets/base.glb?url";
 import battery from "../assets/battery.glb?url";
 import camera from "../assets/camera.glb?url";
+import cameraA from "../assets/camera_a.glb?url";
 import gimmick from "../assets/gimmick.glb?url";
 import {Suspense, useState} from "react";
 import items from "../data/items.js"
@@ -24,6 +25,11 @@ export default function Configure() {
         return <primitive object={scene} scale={1} />;
     }
 
+    function CameraA() {
+        const { scene } = useGLTF(cameraA);
+        return <primitive object={scene} scale={1} />;
+    }
+
     function Gimmick() {
         const { scene } = useGLTF(gimmick);
         return <primitive object={scene} scale={1} />;
@@ -42,19 +48,44 @@ export default function Configure() {
     const [selectedCategory, setSelectedCategory] = useState("base")
     const itemsShown = items[selectedCategory] ?? [];
 
+    const [selectedBase, setSelectedBase] = useState("Base A")
+    const [selectedBattery, setSelectedBattery] = useState("Battery Lite")
+    const [selectedCamera, setSelectedCamera] = useState("Basic Camera")
+    const [selectedGimmick, setSelectedGimmick] = useState("No Gimmick")
+
+    const selectedItemByCategory = {
+        base: selectedBase,
+        battery: selectedBattery,
+        camera: selectedCamera,
+        gimmick: selectedGimmick,
+    };
+
+    function handleSelect(selectedItem) {
+        if (selectedCategory === "base") {
+            setSelectedBase(selectedItem);
+        } else if (selectedCategory === "battery") {
+            setSelectedBattery(selectedItem);
+        } else if (selectedCategory === "camera") {
+            setSelectedCamera(selectedItem);
+        } else if (selectedCategory === "gimmick") {
+            setSelectedGimmick(selectedItem);
+        }
+    }
+
+
   return (
       <div className="flex items-center justify-center">
-          <div className="mt-14 mr-5 border-3 rounded w-1/3 h-160">
+          <div className="mt-14 mr-5 rounded w-1/3 h-160">
               <Canvas camera={{ position: [0, 0, 200], fov: 50 }}>
                   <ambientLight intensity={0.8} />
                   <directionalLight position={[4, 5, 3]} intensity={1.2} />
                   <Suspense fallback={null}>
                       <Base />
                       <Battery/>
-                      <Camera/>
+                      <CameraA/>
                       <Gimmick/>
                   </Suspense>
-                  <OrbitControls target={[0, 0, 0]} />
+                  <OrbitControls target={[0, 0, 0]} enableZoom={false} enablePan={false}/>
               </Canvas>
           </div>
 
@@ -76,7 +107,14 @@ export default function Configure() {
               </div>
               <div className="border-2 border-gray-200 rounded mt-4 p-4">
                   {itemsShown.map((item, index) => (
-                      <div key={index} className="m-4 p-4 border-2 border-gray-200 rounded">
+                      <div
+                          key={index}
+                          className={`m-4 p-4 border-2  rounded cursor-pointer ${
+                              item.title === selectedItemByCategory[selectedCategory]
+                                  ? "bg-blue-200 border-blue-400" 
+                                  : "bg-white border-gray-200"
+                          }`}
+                           onClick={() => handleSelect(item.title)}>
                           <h3 className="font-bold">{item.title}</h3>
                           <ul className="flex flex-row gap-2">
                               {item.specs.map((spec, specIndex) => (
