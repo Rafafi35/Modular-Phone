@@ -60,7 +60,7 @@ const items = {
             price: 0,
         },
         {
-            title: "8x8 Matrix",
+            title: "Sensor",
             specs: [],
             price: 39,
         },

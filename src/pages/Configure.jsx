@@ -1,10 +1,15 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import base from "../assets/base.glb?url";
-import battery from "../assets/battery.glb?url";
-import camera from "../assets/camera.glb?url";
-import basicCamera from "../assets/basic_camera.glb?url";
-import gimmick from "../assets/gimmick.glb?url";
+import batteryLite from "../assets/BatteryLite.glb?url";
+import batteryPro from "../assets/BatteryPro.glb?url";
+import batteryUltra from "../assets/BatteryUltra.glb?url";
+import basicCamera from "../assets/BasicCamera.glb?url";
+import proCamera from "../assets/ProCamera.glb?url";
+import ultraCamera from "../assets/UltraCamera.glb?url";
+import noGimmick from "../assets/NoGimmick.glb?url";
+import sensor from "../assets/Sensor.glb?url";
+import miniScreen from "../assets/MiniScreen.glb?url";
 import {Suspense, useState} from "react";
 import items from "../data/items.js"
 
@@ -12,10 +17,15 @@ export default function Configure() {
 
     const modelUrls = [
         base,
-        battery,
-        camera,
+        batteryLite,
+        batteryPro,
+        batteryUltra,
         basicCamera,
-        gimmick,
+        proCamera,
+        ultraCamera,
+        noGimmick,
+        sensor,
+        miniScreen,
     ]
     Object.values(modelUrls).forEach((url) => useGLTF.preload(url));
 
@@ -70,9 +80,15 @@ export default function Configure() {
                   <directionalLight position={[4, 5, 3]} intensity={1.2} />
                   <Suspense fallback={null}>
                       <Model url={base} />
-                      <Model url={battery} />
-                      <Model url={camera} />
-                      <Model url={gimmick} />
+                      <Model url={selectedCamera === "Basic Camera" ? basicCamera
+                            : selectedCamera === "Pro Camera" ? proCamera
+                              : selectedCamera === "Ultra Camera" ? ultraCamera : basicCamera} />
+                      <Model url={selectedBattery === "Battery Lite" ? batteryLite
+                          : selectedBattery === "Battery Pro" ? batteryPro
+                              : selectedBattery === "Battery Ultra" ? batteryUltra : batteryLite}  />
+                      <Model url={selectedGimmick === "No Gimmick" ? noGimmick
+                          : selectedGimmick === "Sensor" ? sensor
+                              : selectedGimmick === "Mini Screen" ? miniScreen : noGimmick}  />
                   </Suspense>
                   <OrbitControls target={[0, 0, 0]} enableZoom={false} enablePan={false}/>
               </Canvas>
