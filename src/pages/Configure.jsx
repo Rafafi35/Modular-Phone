@@ -98,6 +98,7 @@ export default function Configure() {
                   </Suspense>
                   <OrbitControls target={[0, 0, 0]} enableZoom={false} enablePan={false}/>
               </Canvas>
+              <p className="flex justify-center">Click and Drag mouse to turn phone</p>
           </div>
 
           <div className="w-1/2 h-160 mt-14    ">
