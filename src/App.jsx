@@ -1,28 +1,22 @@
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
-import './App.css'
-import phoneModel from "./assets/phone.glb?url";
-import { Suspense } from "react";
+import Home from "./pages/Home.jsx";
+import Configure from "./pages/Configure.jsx";
+import BuyParts from "./pages/BuyParts.jsx";
+import Cart from "./pages/Cart.jsx";
+import Navigation from "./components/Navigation.jsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
-
-  function Model() {
-    const { scene } = useGLTF(phoneModel);
-    return <primitive object={scene} scale={1} />;
-  }
-
   return (
-      <div className="viewer">
-          <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-              <ambientLight intensity={0.8} />
-              <directionalLight position={[4, 5, 3]} intensity={1.2} />
-              <Suspense fallback={null}>
-                  <Model />
-              </Suspense>
-              <OrbitControls target={[0, 0, 0]} />
-          </Canvas>
-      </div>
-  )
+    <BrowserRouter>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/configure" element={<Configure />} />
+        <Route path="/buy-parts" element={<BuyParts />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
