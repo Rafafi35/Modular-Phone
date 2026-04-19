@@ -1,16 +1,11 @@
-# React + Vite
+# Modular Phone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This Website shows the modular phone concept,
+which is a type of smartphone that allows users to easily swap out and upgrade individual components,
+such as the camera or battery.
+This design promotes sustainability and reduces electronic waste by allowing users to replace only the parts that need upgrading or repair,
+rather than discarding the entire device.
+The modular phone concept also encourages innovation and customization,
+as users can choose from a variety of modules to suit their needs and preferences.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+[Modular Phone Website](https://rafafi35.github.io/Modular-Phone/)
