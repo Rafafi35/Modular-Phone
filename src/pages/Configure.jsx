@@ -11,7 +11,7 @@ import proCamera from "../assets/ProCamera.glb?url";
 import ultraCamera from "../assets/UltraCamera.glb?url";
 import noGimmick from "../assets/NoGimmick.glb?url";
 import sensor from "../assets/Sensor.glb?url";
-import miniScreen from "../assets/MiniScreen.glb?url";
+import miniScreen from "../assets/miniScreen.glb?url";
 import {Suspense, useState} from "react";
 import items from "../data/items.js"
 
