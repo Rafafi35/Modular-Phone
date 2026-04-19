@@ -1,15 +1,34 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import phoneModel from "../assets/base.glb?url";
+import base from "../assets/base.glb?url";
+import battery from "../assets/battery.glb?url";
+import camera from "../assets/camera.glb?url";
+import gimmick from "../assets/gimmick.glb?url";
 import {Suspense, useState} from "react";
 import items from "../data/items.js"
 
 export default function Configure() {
 
-    function Model() {
-        const { scene } = useGLTF(phoneModel);
+    function Base() {
+        const { scene } = useGLTF(base);
         return <primitive object={scene} scale={1} />;
     }
+
+    function Battery() {
+        const { scene } = useGLTF(battery);
+        return <primitive object={scene} scale={1} />;
+    }
+
+    function Camera() {
+        const { scene } = useGLTF(camera);
+        return <primitive object={scene} scale={1} />;
+    }
+
+    function Gimmick() {
+        const { scene } = useGLTF(gimmick);
+        return <primitive object={scene} scale={1} />;
+    }
+
 
     const buttonStyle = "m-2 p-2 rounded-xl transition-colors inline-flex items-center gap-2";
     const categories = ["base", "battery", "camera", "gimmick"];
@@ -30,7 +49,10 @@ export default function Configure() {
                   <ambientLight intensity={0.8} />
                   <directionalLight position={[4, 5, 3]} intensity={1.2} />
                   <Suspense fallback={null}>
-                      <Model />
+                      <Base />
+                      <Battery/>
+                      <Camera/>
+                      <Gimmick/>
                   </Suspense>
                   <OrbitControls target={[0, 0, 0]} />
               </Canvas>
