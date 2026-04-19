@@ -1,6 +1,8 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import base from "../assets/base.glb?url";
+import baseA from "../assets/baseA.glb?url";
+import basePro from "../assets/basePro.glb?url";
+import baseUltra from "../assets/baseUltra.glb?url";
 import batteryLite from "../assets/BatteryLite.glb?url";
 import batteryPro from "../assets/BatteryPro.glb?url";
 import batteryUltra from "../assets/BatteryUltra.glb?url";
@@ -16,7 +18,9 @@ import items from "../data/items.js"
 export default function Configure() {
 
     const modelUrls = [
-        base,
+        baseA,
+        basePro,
+        baseUltra,
         batteryLite,
         batteryPro,
         batteryUltra,
@@ -79,7 +83,9 @@ export default function Configure() {
                   <ambientLight intensity={0.8} />
                   <directionalLight position={[4, 5, 3]} intensity={1.2} />
                   <Suspense fallback={null}>
-                      <Model url={base} />
+                      <Model url={selectedBase === "Base A" ? baseA
+                          : selectedBase === "Base Pro" ? basePro
+                              : selectedBase === "Base Ultra" ? baseUltra : baseA} />
                       <Model url={selectedCamera === "Basic Camera" ? basicCamera
                             : selectedCamera === "Pro Camera" ? proCamera
                               : selectedCamera === "Ultra Camera" ? ultraCamera : basicCamera} />
