@@ -10,29 +10,17 @@ import items from "../data/items.js"
 
 export default function Configure() {
 
-    function Base() {
-        const { scene } = useGLTF(base);
-        return <primitive object={scene} scale={1} />;
-    }
+    const modelUrls = [
+        base,
+        battery,
+        camera,
+        basicCamera,
+        gimmick,
+    ]
+    Object.values(modelUrls).forEach((url) => useGLTF.preload(url));
 
-    function Battery() {
-        const { scene } = useGLTF(battery);
-        return <primitive object={scene} scale={1} />;
-    }
-
-    function Camera() {
-        const { scene } = useGLTF(camera);
-        return <primitive object={scene} scale={1} />;
-    }
-    useGLTF.preload(camera)
-
-    function BasicCamera() {
-        const { scene } = useGLTF(basicCamera);
-        return <primitive object={scene} scale={1} />;
-    }
-
-    function Gimmick() {
-        const { scene } = useGLTF(gimmick);
+    function Model({ url }) {
+        const { scene } = useGLTF(url);
         return <primitive object={scene} scale={1} />;
     }
 
@@ -81,10 +69,10 @@ export default function Configure() {
                   <ambientLight intensity={0.8} />
                   <directionalLight position={[4, 5, 3]} intensity={1.2} />
                   <Suspense fallback={null}>
-                      <Base />
-                      <Battery/>
-                      {selectedCamera === "Basic Camera" ? <BasicCamera/> : <Camera/>}
-                      <Gimmick/>
+                      <Model url={base} />
+                      <Model url={battery} />
+                      <Model url={camera} />
+                      <Model url={gimmick} />
                   </Suspense>
                   <OrbitControls target={[0, 0, 0]} enableZoom={false} enablePan={false}/>
               </Canvas>
