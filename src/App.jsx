@@ -27,7 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/configure" element={<Configure onAddToCart={addToCart} />} />
-        <Route path="/buy-parts" element={<BuyParts />} />
+        <Route path="/buy-parts" element={<BuyParts onAddToCart={addToCart} />} />
         <Route path="/cart" element={<Cart cartItems={cartItems} onRemoveFromCart={removeFromCart} />} />
       </Routes>
     </BrowserRouter>
