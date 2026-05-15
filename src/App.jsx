@@ -1,6 +1,7 @@
 import Home from "./pages/Home.jsx";
 import Configure from "./pages/Configure.jsx";
 import BuyParts from "./pages/BuyParts.jsx";
+import Community from "./pages/Community.jsx";
 import Cart from "./pages/Cart.jsx";
 import Navigation from "./components/Navigation.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -29,6 +30,7 @@ function App() {
         <Route path="/configure" element={<Configure onAddToCart={addToCart} />} />
         <Route path="/buy-parts" element={<BuyParts onAddToCart={addToCart} />} />
         <Route path="/cart" element={<Cart cartItems={cartItems} onRemoveFromCart={removeFromCart} />} />
+        <Route path="/community" element={<Community />} />
       </Routes>
     </BrowserRouter>
   );

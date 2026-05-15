@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { House, Wrench, ShoppingCart, Component } from "lucide-react"
+import { House, Wrench, ShoppingCart, Component, Smile } from "lucide-react"
 
 export default function Navigation({ cartItemsCount = 0 }) {
   const linkStyle = ({ isActive }) =>
@@ -23,6 +23,11 @@ export default function Navigation({ cartItemsCount = 0 }) {
         <NavLink to="/buy-parts" end className={linkStyle}>
           <Component size={18} />
           Buy Parts
+        </NavLink>
+
+        <NavLink to={"/community"} end className={linkStyle}>
+            <Smile size={18} />
+            Community
         </NavLink>
 
         <NavLink to="/cart" end className={linkStyle}>
