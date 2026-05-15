@@ -15,7 +15,7 @@ import miniScreen from "../assets/MiniScreen.glb?url";
 import {Suspense, useState} from "react";
 import items from "../data/items.js"
 
-export default function Configure() {
+export default function Configure({ onAddToCart }) {
 
     const modelUrls = [
         baseA,
@@ -73,6 +73,23 @@ export default function Configure() {
         } else if (selectedCategory === "gimmick") {
             setSelectedGimmick(selectedItem);
         }
+    }
+
+    function handleAddToCart() {
+        const baseItem = items.base.find(item => item.title === selectedBase);
+        const batteryItem = items.battery.find(item => item.title === selectedBattery);
+        const cameraItem = items.camera.find(item => item.title === selectedCamera);
+        const gimmickItem = items.gimmick.find(item => item.title === selectedGimmick);
+
+        const configuration = {
+            base: baseItem,
+            battery: batteryItem,
+            camera: cameraItem,
+            gimmick: gimmickItem,
+            totalPrice: baseItem.price + batteryItem.price + cameraItem.price + gimmickItem.price
+        };
+
+        onAddToCart(configuration);
     }
 
 
@@ -148,7 +165,7 @@ export default function Configure() {
                       items.gimmick.find(item => item.title === selectedGimmick)?.price
                   }</p>
                   <div className="flex justify-center">
-                      <button className="border-2 border-gray-200 m-2 p-2 rounded-xl hover:bg-gray-200">Add to Cart</button>
+                      <button onClick={handleAddToCart} className="border-2 border-gray-200 m-2 p-2 rounded-xl hover:bg-gray-200">Add to Cart</button>
                   </div>
               </div>
           </div>
