@@ -78,7 +78,7 @@ export default function Configure() {
 
   return (
       <div className="flex items-center justify-center">
-          <div className="mt-14 mr-5 rounded w-1/3 h-160">
+          <div className="mt-4 mr-5 rounded w-1/3 h-160">
               <Canvas camera={{ position: [0, 0, 200], fov: 50 }}>
                   <ambientLight intensity={0.8} />
                   <directionalLight position={[4, 5, 3]} intensity={1.2} />
@@ -101,7 +101,7 @@ export default function Configure() {
               <p className="flex justify-center">Click and Drag mouse to turn phone</p>
           </div>
 
-          <div className="w-1/2 h-160 mt-14    ">
+          <div className="w-1/2 h-160">
               <div className="flex flex-row gap-4 justify-center border-2 border-gray-200 rounded">
                   {categories.map((category) => (
                       <button
@@ -117,7 +117,7 @@ export default function Configure() {
                       </button>
                   ))}
               </div>
-              <div className="border-2 border-gray-200 rounded mt-4 p-4">
+              <div className="border-2 border-gray-200 rounded mt-2 p-4">
                   {itemsShown.map((item, index) => (
                       <div
                           key={index}
@@ -137,7 +137,7 @@ export default function Configure() {
                       </div>
                   ))}
               </div>
-              <div className="border-2 border-gray-200 rounded mt-4 p-4">
+              <div className="border-2 border-gray-200 rounded mt-2 p-4">
                   <div className="px-20 flex justify-between"><p>{selectedBase}</p><p>CHF {items.base.find(item => item.title === selectedBase)?.price}</p></div>
                   <div className="px-20 flex justify-between"><p>{selectedBattery}</p><p>CHF {items.battery.find(item => item.title === selectedBattery)?.price}</p></div>
                   <div className="px-20 flex justify-between"><p>{selectedCamera}</p><p>CHF {items.camera.find(item => item.title === selectedCamera)?.price}</p></div>
@@ -147,6 +147,9 @@ export default function Configure() {
                       items.camera.find(item => item.title === selectedCamera)?.price +
                       items.gimmick.find(item => item.title === selectedGimmick)?.price
                   }</p>
+                  <div className="flex justify-center">
+                      <button className="border-2 border-gray-200 m-2 p-2 rounded-xl hover:bg-gray-200">Add to Cart</button>
+                  </div>
               </div>
           </div>
       </div>
