@@ -13,10 +13,11 @@ Dieses Projekt zeigt wie ein Modulares Handy aussehen könnte, bei welchem man K
 
 ## Roadmap
 - [X] MVP
-- [ ] Mehr Optionen bei Komponentenwahl
-- [ ] Anzeige des geschätzten Preises
+- [X] Mehr Optionen bei Komponentenwahl
+- [ ] Beschreibung der Specs der Komponenten
+- [x] Anzeige des Preises
 - [ ] Zusammenfassung der Handy-Specs (z.B Akkulaufzeit bei den gewählten Komponenten)
-- [ ] 3D Vorschau des Handys
+- [X] 3D Vorschau des Handys
 
 ## Deployment
 Diese App wird über GitHub Pages veröffentlicht.
