@@ -1,11 +1,24 @@
-# Modular Phone
+# 🌍 Circular MVP
 
-This Website shows the modular phone concept,
-which is a type of smartphone that allows users to easily swap out and upgrade individual components,
-such as the camera or battery.
-This design promotes sustainability and reduces electronic waste by allowing users to replace only the parts that need upgrading or repair,
-rather than discarding the entire device.
-The modular phone concept also encourages innovation and customization,
-as users can choose from a variety of modules to suit their needs and preferences.
+## Idee
+Dieses Projekt zeigt wie ein Modulares Handy aussehen könnte, bei welchem man Komponente (z.B Akku, Lautsprecher & Kamera) austauschen kann. Von jeder Komponente gibt es unterschiedliche Varianten die je nach Benutzer nützlich sein könnten.
+## Circular Flow
+- [X] Use Longer
+- [ ] Use Again
+- [ ] Make Clean
+- [ ] Use Less
 
-[Modular Phone Website](https://rafafi35.github.io/Modular-Phone/)
+## Funktionen
+- Komponenten austauschen
+
+## Roadmap
+- [X] MVP
+- [ ] Mehr Optionen bei Komponentenwahl
+- [ ] Anzeige des geschätzten Preises
+- [ ] Zusammenfassung der Handy-Specs (z.B Akkulaufzeit bei den gewählten Komponenten)
+- [ ] 3D Vorschau des Handys
+
+## Deployment
+Diese App wird über GitHub Pages veröffentlicht.
+
+https://rafafi35.github.io/Modular-Phone-MVP/
