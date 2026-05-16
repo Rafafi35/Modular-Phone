@@ -1,7 +1,15 @@
 import { NavLink } from "react-router-dom";
 import { House, Wrench, ShoppingCart, Component, Smile } from "lucide-react"
+import { useState, useEffect } from "react";
 
 export default function Navigation({ cartItemsCount = 0 }) {
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    setAnimate(true);
+    const timer = setTimeout(() => setAnimate(false), 400);
+    return () => clearTimeout(timer);
+  }, [cartItemsCount]);
   const linkStyle = ({ isActive }) =>
     `m-4 p-2 rounded-xl transition-colors hover:bg-gray-100 inline-flex items-center gap-2 ${
       isActive ? "bg-gray-200" : ""
@@ -34,7 +42,7 @@ export default function Navigation({ cartItemsCount = 0 }) {
           <div className="relative">
             <ShoppingCart size={18} />
             {cartItemsCount > 0 && (
-              <span className="absolute -bottom-4 -right-14 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+              <span className={`absolute -bottom-4 -right-14 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center ${animate ? 'badge-pulse' : ''}`}>
                 {cartItemsCount}
               </span>
             )}
