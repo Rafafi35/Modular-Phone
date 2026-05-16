@@ -26,11 +26,11 @@ function App() {
     <BrowserRouter>
       <Navigation cartItemsCount={cartItems.length} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/configure" element={<Configure onAddToCart={addToCart} />} />
-        <Route path="/buy-parts" element={<BuyParts onAddToCart={addToCart} />} />
-        <Route path="/cart" element={<Cart cartItems={cartItems} onRemoveFromCart={removeFromCart} />} />
-        <Route path="/community" element={<Community />} />
+        <Route path="/Modular-Phone/" element={<Home />} />
+        <Route path="/Modular-Phone/configure" element={<Configure onAddToCart={addToCart} />} />
+        <Route path="/Modular-Phone/buy-parts" element={<BuyParts onAddToCart={addToCart} />} />
+        <Route path="/Modular-Phone/cart" element={<Cart cartItems={cartItems} onRemoveFromCart={removeFromCart} />} />
+        <Route path="/Modular-Phone/community" element={<Community />} />
       </Routes>
     </BrowserRouter>
   );
