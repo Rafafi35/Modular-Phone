@@ -21,4 +21,4 @@ Dieses Projekt zeigt wie ein Modulares Handy aussehen könnte, bei welchem man K
 ## Deployment
 Diese App wird über GitHub Pages veröffentlicht.
 
-https://rafafi35.github.io/Modular-Phone-MVP/
+https://rafafi35.github.io/Modular-Phone/
